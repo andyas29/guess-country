@@ -22,7 +22,16 @@
             "country": "ukraine",
             "tags": [
                 "european",
-                "latin"
+                "easter-european"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=Lqs2oIBFPxI",
+            "country": "italy",
+            "tags": [
+                "latin",
+                "european",
+                "mediterenean"
             ]
         }
     ]
