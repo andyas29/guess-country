@@ -84,6 +84,96 @@
                 "european",
                 "western-european"
             ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=Fpu5a0Bl8eY",
+            "country": "germany",
+            "tags": [
+                "european",
+                "western-european"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=6WlI24rv__g",
+            "country": "mongolia",
+            "tags": [
+                "asian",
+                "folklore"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=C_y7zQUZ7pM",
+            "country": "china",
+            "tags": [
+                "asian",
+                "folklore"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=pFEDBewcfks",
+            "country": "netherlands",
+            "tags": [
+                "european",
+                "western-european"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=wxiMrvDbq3s",
+            "country": "australia",
+            "tags": [
+                "european",
+                "western-european"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=Zi8vJ_lMxQI",
+            "country": "austria",
+            "tags": [
+                "european",
+                "western-european"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=5uPoDNEn3I0",
+            "country": "usa",
+            "tags": [
+                "joke"
+            ]
+        }
+        {
+            "link": "https://www.youtube.com/watch?v=vxw1QaqnbPU",
+            "country": "greece",
+            "tags": [
+                "balkan",
+                "european",
+                "mediterenean",
+                "folklore"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=DgFa6Qt1hJg",
+            "country": "iceland",
+            "tags": [
+                "nordic",
+                "european",
+                "folklore"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=zvq9r6R6QAY",
+            "country": "sweden",
+            "tags": [
+                "nordic",
+                "european"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=Qov6HoNZEJs",
+            "country": "georgia",
+            "tags": [
+                "caucasus",
+                "folklore"
+            ]
         }
     ]
 }
