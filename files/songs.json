@@ -1,0 +1,29 @@
+{
+    "songs": [
+        {
+            "link": "https://www.youtube.com/watch?v=XW0W7j04iRQ",
+            "country": "italy",
+            "tags": [
+                "latin",
+                "european",
+                "mediterenean"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=m5uHyvqx7Yo",
+            "country": "brazil",
+            "tags": [
+                "south-american",
+                "latin"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=0UmvUy1LziE",
+            "country": "ukraine",
+            "tags": [
+                "european",
+                "latin"
+            ]
+        }
+    ]
+}
