@@ -7,7 +7,8 @@
                 "neapolitan",
                 "latin",
                 "european",
-                "mediterenean"
+                "mediterenean",
+                "folklore"
             ]
         },
         {
@@ -32,7 +33,56 @@
             "tags": [
                 "latin",
                 "european",
-                "mediterenean"
+                "mediterenean",
+                "folklore"
+            ]
+        },
+        {
+            "link": "https://youtu.be/AK51LblcEOw",
+            "country": "japan",
+            "tags": [
+                "asian",
+                "folklore"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=jnORG0ZCJkc",
+            "country": "romania",
+            "tags": [
+                "european",
+                "easter-european"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=S7woEXovruc",
+            "country": "ireland",
+            "tags": [
+                "european",
+                "folklore"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=gb8AGuD2uOI",
+            "country": "scotland",
+            "tags": [
+                "european",
+                "folklore"
+            ]
+        },
+        {
+            "link": "https://www.youtube.com/watch?v=MLg83QMmlGs",
+            "country": "russian",
+            "tags": [
+                "european",
+                "eastern-european"
+            ]
+        }
+        {
+            "link": "https://www.youtube.com/watch?v=fVfnEyLOkrM",
+            "country": "france",
+            "tags": [
+                "european",
+                "western-european"
             ]
         }
     ]
