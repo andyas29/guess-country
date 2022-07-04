@@ -16,6 +16,7 @@ export class Game {
     guild: Guild;
     author: User;
     players: PlayerModel[] = []
+    skipVotes: number;
     constructor(player: Player) {
         this.player = player;
     }
@@ -29,10 +30,13 @@ export class Game {
             }
             if (index < this.maxRounds - 1) {
                 this.playSong(index + 1)
+            } else {
+                console.log(this.songsList)
             }
         })
     }
     startGame(maxRounds: number, message: Message) {
+        this.skipVotes = 0;
         this.isRunning = true
         message.member.voice.channel.members.forEach(user => {
             this.players.push(new PlayerModel(user.user))
@@ -68,6 +72,7 @@ export class Game {
         }
     }
     songEnded() {
+        this.skipVotes = 0;
         this.currentRound += 1;
         if (this.currentRound >= this.maxRounds) {
             this.gameEnded();
@@ -79,12 +84,17 @@ export class Game {
     gameEnded() {
         this.isRunning = false
         this.listeners.forEach(element => {
-            element.gameEnd();
+            element.gameEnd(this.players);
         })
         this.listeners = []
         this.songsList = [];
         this.currentRound = 0;
         this.players = []
-
+    }
+    skip() {
+        this.skipVotes += 1;
+        if (this.skipVotes > this.players.length / 2) {
+            this.nextSong();
+        }
     }
 }

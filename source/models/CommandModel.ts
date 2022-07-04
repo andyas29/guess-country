@@ -1,8 +1,9 @@
-export class CommandModel{
+export class CommandModel {
     prefix;
-    commands:{
-        start;
-        stop;
-        ping;
+    commands: {
+        start: string;
+        stop: string;
+        ping: string;
+        skip: string;
     }
 }
