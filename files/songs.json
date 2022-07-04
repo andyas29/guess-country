@@ -1,6 +1,14 @@
 {
     "songs": [
         {
+            "link": "https://www.youtube.com/watch?v=fVfnEyLOkrM",
+            "country": "france",
+            "tags": [
+                "european",
+                "western-european"
+            ]
+        },
+        {
             "link": "https://www.youtube.com/watch?v=XW0W7j04iRQ",
             "country": "italy",
             "tags": [
@@ -71,18 +79,10 @@
         },
         {
             "link": "https://www.youtube.com/watch?v=MLg83QMmlGs",
-            "country": "russian",
+            "country": "russia",
             "tags": [
                 "european",
                 "eastern-european"
-            ]
-        },
-        {
-            "link": "https://www.youtube.com/watch?v=fVfnEyLOkrM",
-            "country": "france",
-            "tags": [
-                "european",
-                "western-european"
             ]
         },
         {
@@ -139,7 +139,7 @@
             "tags": [
                 "joke"
             ]
-        }
+        },
         {
             "link": "https://www.youtube.com/watch?v=vxw1QaqnbPU",
             "country": "greece",
