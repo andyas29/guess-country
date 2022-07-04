@@ -1,39 +1,29 @@
 import { SongModel } from "./models/SongModel";
 import * as CommandsUtil from "./commandsUtil"
 import { Player, Queue } from "discord-player";
-import { DMChannel, Guild, Message, NewsChannel, PartialDMChannel, TextChannel, ThreadChannel, VoiceChannel } from "discord.js";
+import { DMChannel, Guild, Message, NewsChannel, PartialDMChannel, TextChannel, ThreadChannel, User, VoiceChannel } from "discord.js";
+import { PlayerModel } from "./models/PlayerModel";
+import { listeners } from "process";
 export class Game {
+    isRunning: boolean = false
+    listeners: any[] = []
     player: Player;
     maxRounds: number;
     allSongs: SongModel[];
     songsList: SongModel[] = [];
     queue: Queue<DMChannel | PartialDMChannel | NewsChannel | TextChannel | ThreadChannel | VoiceChannel>;
-    currentRound: number;
-    guild: Guild
-    author
-    constructor(maxRounds: number, player: Player, message: Message) {
-        this.maxRounds = maxRounds;
-        this.allSongs = CommandsUtil.getSongs().songs;
+    currentRound: number = 0;
+    guild: Guild;
+    author: User;
+    players: PlayerModel[] = []
+    constructor(player: Player) {
         this.player = player;
-        this.guild = message.guild;
-        this.author = message.author;
-        for (var index = 0; index < maxRounds; index++) {
-            let randomIndex = Math.floor(Math.random() * (this.allSongs.length - 1));
-            this.songsList.push(this.allSongs[randomIndex]);
-            this.allSongs.splice(randomIndex, 1);
-        }
-
-        this.queue = this.player.createQueue(message.guild, {
-            metadata: message.channel
-        });
-        this.queue.connect(message.member.voice.channel)
     }
     playSong(index = 0) {
         this.player.search(this.songsList[index].link.toString(), {
             requestedBy: this.author
         }).then(x => {
             this.queue.addTrack(x.tracks[0])
-            console.log("playing " + this.queue.nowPlaying().title)
             if (index == 0) {
                 this.queue.play();
             }
@@ -42,7 +32,59 @@ export class Game {
             }
         })
     }
-    startGame() {
+    startGame(maxRounds: number, message: Message) {
+        this.isRunning = true
+        message.member.voice.channel.members.forEach(user => {
+            this.players.push(new PlayerModel(user.user))
+        })
+        this.maxRounds = maxRounds;
+        this.allSongs = CommandsUtil.getSongs().songs;
+        this.guild = message.guild;
+        this.author = message.author;
+        for (var index = 0; index < maxRounds; index++) {
+            let randomIndex = Math.floor(Math.random() * (this.allSongs.length - 1));
+            this.songsList.push(this.allSongs[randomIndex]);
+            this.allSongs.splice(randomIndex, 1);
+        }
+        this.queue = this.player.createQueue(message.guild, {
+            metadata: message.channel
+        });
+        this.queue.connect(message.member.voice.channel)
         this.playSong();
+    }
+    stopGame() {
+        this.queue.clear();
+        this.queue.stop();
+        this.gameEnded();
+    }
+    checkAnswer(msg: Message<boolean>) {
+        console.log(this.songsList[this.currentRound]);
+        let user = this.players.find(element => {
+            return element.user.id == msg.author.id
+        })
+        if (user && msg.content == this.songsList[this.currentRound].country) {
+            user.score += 1;
+            this.nextSong();
+        }
+    }
+    songEnded() {
+        this.currentRound += 1;
+        if (this.currentRound >= this.maxRounds) {
+            this.gameEnded();
+        }
+    }
+    nextSong() {
+        this.queue.skip();
+    }
+    gameEnded() {
+        this.isRunning = false
+        this.listeners.forEach(element => {
+            element.gameEnd();
+        })
+        this.listeners = []
+        this.songsList = [];
+        this.currentRound = 0;
+        this.players = []
+
     }
 }

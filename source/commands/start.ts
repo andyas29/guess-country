@@ -3,15 +3,14 @@ import { Message } from "discord.js";
 import * as CommandsUtil from "../commandsUtil"
 import { Game } from "../game";
 import { SongModel } from "../models/SongModel";
-export function start(message: Message, player: Player) {
+export function start(message: Message, game: Game) {
     const arg: string[] = CommandsUtil.getArguments(message)
-    var trackNumber: number;
+    var rounds: number;
     if (Number.parseInt(arg[1])) {
-        trackNumber = Number.parseInt(arg[1]);
+        rounds = Number.parseInt(arg[1]);
     } else {
-        trackNumber = 3;
+        rounds = 3;
     }
-    const game: Game = new Game(trackNumber, player, message)
-    game.startGame();
+    game.startGame(rounds, message);
     return game;
 }
