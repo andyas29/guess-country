@@ -20,7 +20,7 @@ export class Game {
     constructor(player: Player) {
         this.player = player;
     }
-    playSong(index = 0) {
+    private playSong(index = 0) {
         this.player.search(this.songsList[index].link.toString(), {
             requestedBy: this.author
         }).then(x => {
@@ -67,8 +67,10 @@ export class Game {
             return element.user.id == msg.author.id
         })
         if (user && msg.content == this.songsList[this.currentRound].country) {
-            user.score += 1;
-            this.nextSong();
+            this.correctAnswer(msg, user)
+
+        } else {
+            this.wrongAnswer(msg)
         }
     }
     songEnded() {
@@ -78,10 +80,10 @@ export class Game {
             this.gameEnded();
         }
     }
-    nextSong() {
+    private nextSong() {
         this.queue.skip();
     }
-    gameEnded() {
+    private gameEnded() {
         this.isRunning = false
         this.listeners.forEach(element => {
             element.gameEnd(this.players);
@@ -96,5 +98,13 @@ export class Game {
         if (this.skipVotes > this.players.length / 2) {
             this.nextSong();
         }
+    }
+    private correctAnswer(msg: Message<boolean>, user: PlayerModel) {
+        msg.react(':white_check_mark:')
+        user.score += 1;
+        this.nextSong();
+    }
+    private wrongAnswer(msg: Message<boolean>) {
+        msg.react(':x:')
     }
 }
