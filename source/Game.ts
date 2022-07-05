@@ -1,7 +1,7 @@
 import { SongModel } from "./models/SongModel";
 import * as CommandsUtil from "./commandsUtil"
 import { Player, Queue } from "discord-player";
-import { DMChannel, Guild, Message, NewsChannel, PartialDMChannel, TextChannel, ThreadChannel, User, VoiceChannel } from "discord.js";
+import { DMChannel, EmojiIdentifierResolvable, Guild, Message, NewsChannel, PartialDMChannel, TextChannel, ThreadChannel, User, VoiceChannel } from "discord.js";
 import { PlayerModel } from "./models/PlayerModel";
 import { listeners } from "process";
 export class Game {
@@ -100,11 +100,11 @@ export class Game {
         }
     }
     private correctAnswer(msg: Message<boolean>, user: PlayerModel) {
-        msg.react(':white_check_mark:')
+        msg.react('✅')
         user.score += 1;
         this.nextSong();
     }
     private wrongAnswer(msg: Message<boolean>) {
-        msg.react(':x:')
+        msg.react('❌')
     }
 }
